@@ -1,0 +1,37 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+header{
+   display: flex; 
+   align-items: center;
+   justify-content: space-between;
+   border: 1px solid black;
+}
+.logo > img{
+    width: 140px;
+    height: 100px;
+    margin-top: 5px;
+    margin-left: 50px;
+}
+.navLinks{
+    margin-right: 100px;
+}
+.navLinks >ul{
+    display: flex;
+}
+.navLinks >ul >li{
+    padding: 10px;
+    margin: 10px;
+    list-style: none;
+}
+.navLinks >ul> li> a{
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.navLinks >ul> li> a:hover{
+    color: #FECB0F;
+}

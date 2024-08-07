@@ -1,5 +1,6 @@
 import React from "react";
-import './restaurantCard.css'
+import '../CSS/restaurantCard.css'
+
 
 const RestaurantCard = (props) => {
 

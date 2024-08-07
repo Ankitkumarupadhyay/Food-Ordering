@@ -1,7 +1,14 @@
-import React from 'react'
-import './header.css'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import '../CSS/header.css'
 
 const Header = () => {
+    const[btnText,setBtnText]=useState("Login")
+
+    const BtnTxt =()=>{
+        setBtnText((prev)=> prev ==="LogOut" ? "Login" :"LogOut")
+    }
+
     return (
         <header>
             <div className="logo">
@@ -9,10 +16,11 @@ const Header = () => {
             </div>
             <div className="navLinks">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About US</a></li>
-                    <li><a href="#">Contact US</a></li>
-                    <li><a href="#">Cart</a></li>
+                    <li><Link to={"/"}>Home</Link></li>
+                    <li><Link to={"/about"}>About US</Link></li>
+                    <li><Link to={"/contact"}>Contact US</Link></li>
+                    <li><Link>Cart</Link></li>
+                    <li><button className='loginBtn' onClick={BtnTxt} >{btnText}</button></li>
                     
                 </ul>
             </div>

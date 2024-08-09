@@ -1,34 +1,26 @@
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState(null);
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    
     const { resId } = useParams();
 
-    const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=" + resId);
-
-        const json = await data.json();
-
-        setResInfo(json?.data)
-    }
+const resInfo = useRestaurantMenu(resId);
 
     if (resInfo === null) {
         return <Shimmer />
     }
 
-
     const { name, id, city, cuisines, avgRating, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
 
 
-    const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    const recommended = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((e)=>{
+        return e?.card?.card?.title === "Recommended"})  ;
+        console.log(recommended);
 
-
+    const{itemCards}=recommended[0]?.card?.card ;
 
 
     return <>
@@ -44,11 +36,12 @@ const RestaurantMenu = () => {
             </div>
             <div className="menuList" >
                 <h1>Menu </h1>
-                <ul style={{ padding: " 10px " }}  >
+                <ul  >
+                   
 
                     {
                         itemCards.map((i) => (
-                            <li key={i.card.info.id}> {i.card.info.id}-- {i.card.info.name} --  Rs.{i.card.info.finalPrice / 100} </li>
+                            <li key={i?.card?.info?.id}> {i?.card?.info?.id}-- {i?.card?.info?.name} --  Rs.{i?.card?.info?.finalPrice / 100} </li>
                         ))
                     }
                 </ul>

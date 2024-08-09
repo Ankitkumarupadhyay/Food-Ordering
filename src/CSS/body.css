@@ -59,4 +59,7 @@
     flex-wrap: wrap;
 
 }
+.resContainer>a{
+    text-decoration: none;
+}
 

@@ -17,6 +17,7 @@ header{
 }
 .navLinks{
     margin-right: 100px;
+    display: flex;
 }
 .navLinks >ul{
     display: flex;
@@ -44,4 +45,11 @@ header{
     border: none;
    font-weight: bolder;
    border-radius: 10px;
+}
+.online{
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    margin-top: 28px;
+    border-radius: 10px;
 }

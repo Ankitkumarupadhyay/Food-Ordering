@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import '../CSS/body.css';
+// import '../CSS/body.css';
 import RestaurantCard from './RestaurantCard';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
+import Offline from '../components/Offline';
+import useOnlineStatus from '../utils/useOnlineStatus';
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -25,41 +27,44 @@ const Body = () => {
 
         const json = await data.json();
 
-        setListOfRestaurants( json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants )
-        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants )
+        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
+    const onlineStatus = useOnlineStatus();
 
 
-    return listOfRestaurants.length === 0 ? (<Shimmer />) : (
-        <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input type="text"
-                        value={searchText}
-                        onChange={(e) => {
-                            setSearchText(e.target.value)
-                        }}
-                        placeholder='Find your favourite' />
-                    <button onClick={() => {
-                        setFilteredRestaurants(listOfRestaurants.filter((res) => (
-                            res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                        )))
-                    }} >Submit</button>
+   
+   return onlineStatus === false ? <Offline /> :  listOfRestaurants.length === 0 ? (<Shimmer />) : (
+            <div className="body">
+                <div className="filter gap-5 py-3 px-44 flex">
+                    <div className="search bg-white flex border-2 border-solid border-[#FECB0F] rounded-xl">
+                        <input className='w-44 border-0 outline-none py-1 px-3 rounded-xl' type="text"
+                            value={searchText}
+                            onChange={(e) => {
+                                setSearchText(e.target.value)
+                            }}
+                            placeholder='Find your favourite' />
+                        <button className='bg-[#FECB0F] rounded-lg w-20 cursor-pointer font-medium' onClick={() => {
+                            setFilteredRestaurants(listOfRestaurants.filter((res) => (
+                                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                            )))
+                        }} >Submit</button>
+                    </div>
+                    <button className="filterBtn font-medium bg-[#FECB0F] py-2 px-3 rounded-xl" onClick={() => filterCardsRated()} >Top rated Restaurants</button>
+
                 </div>
-                <button className="filterBtn" onClick={() => filterCardsRated()} >Top rated Restaurants</button>
+                <div className="resContainer py-5 px-[180px] flex flex-wrap">
+                    {
+                        filteredRestaurants.map((restaurant) => (
+                            <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}> <RestaurantCard resData={restaurant} /></Link>
+                        ))
+                    }
 
+                </div>
             </div>
-            <div className="resContainer">
-                {
-                    filteredRestaurants.map((restaurant) => (
-                       <Link to={"/restaurant/"+ restaurant.info.id} key={restaurant.info.id}> <RestaurantCard  resData={restaurant} /></Link> 
-                    ))
-                }
+        )
 
-            </div>
-        </div>
-    )
 }
 
 export default Body

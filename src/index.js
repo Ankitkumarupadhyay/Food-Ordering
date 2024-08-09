@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {appRouter} from "./App"
 import { RouterProvider } from 'react-router-dom';
+import './index.css'
 
 
 

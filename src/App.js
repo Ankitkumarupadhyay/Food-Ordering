@@ -1,57 +1,77 @@
 import Body from './components/Body';
 import Header from './components/Header';
-import { createBrowserRouter ,Outlet } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
 import Login from './components/Login';
+import { useEffect, useState } from 'react';
 // import ComponentClass from './components/ComponentClass';
-
+import UserContext from './utils/UserContext';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+import CartPage from './components/CartPage';
 
 
 function App() {
-
+  const[userName,setUserName]=useState();
+ 
+  useEffect(()=>{
+ // Authentication logic....
+ const data={
+  name:"Ankit"
+ }
+ setUserName(data.name)
+  },[])
  
   return <>
-  <Header />
-  <Outlet />
+  <Provider store={appStore}>
+  <UserContext.Provider value={{name : userName ,setUserName}}>
+    <Header />
+    <Outlet />
+    </UserContext.Provider>
+    </Provider>
+  </>
 
-  </>  
-    
 }
 
 
-export const appRouter= createBrowserRouter([
+export const appRouter = createBrowserRouter([
   {
     path: '/',
-    element:<App />,
-    children:[
+    element: <App />,
+    children: [
       {
         path: '/',
-        element:<Body />
+        element: <Body />
       },
       {
         path: '/about',
-        element:<About />
+        element: <About />
       },
       {
         path: '/contact',
-        element:<Contact />
+        element: <Contact />
       },
-      
+
       {
         path: '/login',
-        element:<Login />
+        element: <Login />
       },
       {
         path: '/restaurant/:resId',
         element: <RestaurantMenu />
+      },
+      
+      {
+        path: '/cart',
+        element: <CartPage />
       }
     ],
-    errorElement : <Error />
+    errorElement: <Error />
   },
-  
+
 ])
 
 

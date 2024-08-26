@@ -1,8 +1,8 @@
-.shimmerCon {
-    /* border: 1px solid yellow; */
-    padding: 20px 180px;
-    display: flex;
-    flex-wrap: wrap;
+/* .shimmerCon {
+    border: 1px solid yellow;
+    padding: 20px 5px;
+    width: 84%;
+    margin: auto;
 
 }
 .shimmerCard{
@@ -11,7 +11,7 @@
      height: 350px;
      background-color: #cccccccb;
      border-radius: 10px;
-     /* z-index: 2; */
+    
      padding: 5px;
      border: 1px solid #cccccc;
      transition: all .1s ease;
@@ -27,3 +27,50 @@
     width: 170px;
     
  }
+
+ */
+
+ .resContainer{
+    padding: 20px 5px;
+    width: 84%;
+    margin: auto;
+}
+.filter{
+    padding: 12px 176px;
+}
+.search{
+    width: 259px;
+}
+
+.filterBtn{
+    font-weight: 500;
+    width: 200px;
+}
+
+@media(max-width:1050px){
+    .resContainer{
+        padding: 20px 0px;
+        width: 95%;
+        margin: auto;
+    }
+}
+@media(max-width:850px){
+    .filter{
+        padding: 12px 50px;
+    }
+}
+@media(max-width:620px){
+    .filter{
+        flex-direction: column;
+    }
+    .filterBtn {
+        padding: 5px;
+        width: 180px;
+    }
+}
+@media(max-width:350px){
+    .filter{
+        padding: 5px 10px;
+    }
+}
+

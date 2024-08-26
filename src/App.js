@@ -12,25 +12,32 @@ import UserContext from './utils/UserContext';
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 import CartPage from './components/CartPage';
+import Footer from './components/Footer';
+import useOnlineStatus from './utils/useOnlineStatus';
+import Offline from './components/Offline';
 
 
 function App() {
-  const[userName,setUserName]=useState();
- 
-  useEffect(()=>{
- // Authentication logic....
- const data={
-  name:"Ankit"
- }
- setUserName(data.name)
-  },[])
- 
-  return <>
-  <Provider store={appStore}>
-  <UserContext.Provider value={{name : userName ,setUserName}}>
-    <Header />
-    <Outlet />
-    </UserContext.Provider>
+  const [userName, setUserName] = useState();
+  const onlineStatus = useOnlineStatus();
+
+  useEffect(() => {
+    // Authentication logic....
+    const data = {
+      name: ""
+    }
+    setUserName(data.name)
+  }, [])
+
+  return onlineStatus === false ? <Offline /> : <>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ name: userName, setUserName }}>
+        <div>
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      </UserContext.Provider>
     </Provider>
   </>
 
@@ -63,7 +70,7 @@ export const appRouter = createBrowserRouter([
         path: '/restaurant/:resId',
         element: <RestaurantMenu />
       },
-      
+
       {
         path: '/cart',
         element: <CartPage />

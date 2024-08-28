@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import { useSelector } from 'react-redux';
 // import cartStore from '../utils/cartStore';
+import logo from '../assets/Foodigy-logo.webp'
 import "../CSS/header.css"
 
 
@@ -26,7 +27,8 @@ const Header = () => {
     return (
         <header className="flex w-[100%] z-50 justify-between  shadow-xl  " >
             <div className="logo   ">
-                <img src="https://penji.co/wp-content/uploads/2022/08/11.Foodigy-logo.jpg" alt='logo' />
+                <img src={logo} alt='logo' />
+                {/* <img src="https://penji.co/wp-content/uploads/2022/08/11.Foodigy-logo.jpg" alt='logo' /> */}
             </div>
 
 

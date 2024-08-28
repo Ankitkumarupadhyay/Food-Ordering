@@ -36,9 +36,12 @@ const CartPage = () => {
     }
 
   return cartItems.length ===0 ? <EmptyCart /> :<>
-  <button className='bg-[#FECB0F] absolute  rounded-lg w-20 h-8 ml-32 mt-5 cursor-pointer font-bold' onClick={handleCartItem}>Clear</button>
-     <div className='w-8/12 m-auto'>  <AccordianContent data={cartItems} /></div>
+ 
+  <button className='bg-[#FECB0F] absolute right-2 font-medium w-12  rounded-lg sm:w-20 h-8 sm:left-10 mt-5 cursor-pointer sm:font-bold' onClick={handleCartItem}>Clear</button>
+     <div className='w-[95%] sm:w-8/12 m-auto'>  <AccordianContent data={cartItems}  /></div>
+     
   </>
+ 
 }
 
 export default CartPage

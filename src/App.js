@@ -46,7 +46,7 @@ function App() {
 
 export const appRouter = createBrowserRouter([
   {
-    path: '/',
+    path: '',
     element: <App />,
     children: [
       {

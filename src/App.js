@@ -76,7 +76,7 @@ export const appRouter = createBrowserRouter([
         element: <CartPage />
       }
     ],
-    errorElement: <App />
+    errorElement: <Body />
   },
 
 ])

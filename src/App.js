@@ -13,13 +13,13 @@ import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 import CartPage from './components/CartPage';
 import Footer from './components/Footer';
-import useOnlineStatus from './utils/useOnlineStatus';
-import Offline from './components/Offline';
+
+// import Offline from './components/Offline';
 
 
 function App() {
   const [userName, setUserName] = useState();
-  const onlineStatus = useOnlineStatus();
+  
 
   useEffect(() => {
     // Authentication logic....
@@ -29,7 +29,7 @@ function App() {
     setUserName(data.name)
   }, [])
 
-  return onlineStatus === false ? <Offline /> : <>
+  return  <>
     <Provider store={appStore}>
       <UserContext.Provider value={{ name: userName, setUserName }}>
         <div>

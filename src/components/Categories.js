@@ -19,8 +19,8 @@ const Categories = () => {
           });
         const json = await data.json();
         // console.log(json?.data?.cards[0]?.card?.card?.imageGridCards?.info)
-
-        setElements(json?.data?.cards[0]?.card?.card?.imageGridCards?.info);   
+        const imageGrids = json?.data?.cards[0]?.card?.card?.imageGridCards?.info || []
+        setElements(imageGrids);
     }
 
     const next = ()=>{

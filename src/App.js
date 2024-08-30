@@ -3,7 +3,7 @@ import Header from './components/Header';
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import About from './components/About';
 import Contact from './components/Contact';
-// import Error from './components/Error';
+import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
 import Login from './components/Login';
 import { useEffect, useState } from 'react';
@@ -46,11 +46,11 @@ function App() {
 
 export const appRouter = createBrowserRouter([
   {
-    path: '',
+    path: '/',
     element: <App />,
     children: [
       {
-        path: '',
+        path: '/',
         element: <Body />
       },
       {
@@ -76,7 +76,7 @@ export const appRouter = createBrowserRouter([
         element: <CartPage />
       }
     ],
-    errorElement: <Body />
+    errorElement: <Error />
   },
 
 ])

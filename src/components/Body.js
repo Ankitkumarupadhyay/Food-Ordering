@@ -31,8 +31,10 @@ const Body = () => {
 
         const json = await data.json();
 
-        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        const restro = cards.filter(item => item.card?.card?.gridElements?.infoWithStyle?.restaurants)[0]
+
+        setListOfRestaurants(restro?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setFilteredRestaurants(restro?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         
     }
 

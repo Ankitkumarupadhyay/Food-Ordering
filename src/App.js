@@ -3,7 +3,7 @@ import Header from './components/Header';
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import About from './components/About';
 import Contact from './components/Contact';
-import Error from './components/Error';
+// import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
 import Login from './components/Login';
 import { useEffect, useState } from 'react';
@@ -76,7 +76,7 @@ export const appRouter = createBrowserRouter([
         element: <CartPage />
       }
     ],
-    errorElement: <Error />
+    errorElement: <App />
   },
 
 ])

@@ -32,7 +32,7 @@ const Body = () => {
 
         const json = await data.json();
 
-        const restro = json?.data?.cards.filter(item => item.card?.card?.gridElements?.infoWithStyle?.restaurants)[1]
+        const restro = json?.data?.cards.filter(item => item.card?.card?.gridElements?.infoWithStyle?.restaurants)[0]
         // console.log(restro)
 
         setListOfRestaurants(restro?.card?.card?.gridElements?.infoWithStyle?.restaurants)

@@ -9,6 +9,7 @@ import Categories from './Categories';
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [resHead, setResHead] = useState("");
     const [searchText, setSearchText] = useState("");
 
     const filterCardsRated = () => {
@@ -31,10 +32,12 @@ const Body = () => {
 
         const json = await data.json();
 
-        const restro = json?.data?.cards.filter(item => item.card?.card?.gridElements?.infoWithStyle?.restaurants)[0]
+        const restro = json?.data?.cards.filter(item => item.card?.card?.gridElements?.infoWithStyle?.restaurants)[1]
+        // console.log(restro)
 
         setListOfRestaurants(restro?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestaurants(restro?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setResHead(restro?.card?.card?.header?.title)
         
     }
 
@@ -47,6 +50,9 @@ const Body = () => {
         
         <div className="body w-[100%] ">
             <Categories />
+            {/* {console.log(resHead)} */}
+                <h1 className='ml-[180px] headCon sm:text-[35px] font-bold'>{resHead}</h1>
+            
             <div className="filter  gap-5 flex">
                 <div className="search bg-white flex border-2 border-solid border-[#FECB0F] rounded-xl">
                     <input className=' border-0 outline-none py-1 px-3 rounded-xl' type="text"

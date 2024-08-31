@@ -19,7 +19,7 @@ const Categories = () => {
           });
         const json = await data.json();
         // console.log(json?.data?.cards[0]?.card?.card?.imageGridCards?.info)
-        
+
         const imageGrids = json?.data?.cards[0]?.card?.card?.imageGridCards?.info || []
         setElements(imageGrids);
     }
@@ -38,7 +38,7 @@ const Categories = () => {
    
 
   return elements.length ===0 ? <CategoriesShimmer /> : <>
-  <div className="main  2xl:w-[1200px] xl:w-[1100px] lg:w-[1000px] md:w-[760px] sm:w-[640px]    mx-auto  ">
+  <div className="main hidden sm:flex flex-col  2xl:w-[1200px] xl:w-[1100px] lg:w-[1000px] md:w-[760px] sm:w-[640px]    mx-auto  ">
 
     <div className="head py-2 sm:py-5  flex items-center justify-between">
        <div className='headCon sm:text-[35px] font-bold '> What's on your mind?</div>

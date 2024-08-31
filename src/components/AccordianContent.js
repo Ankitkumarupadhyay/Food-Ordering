@@ -19,9 +19,9 @@ const AccordianContent = ({ data }) => {
                     <div className="info w-[100%] sm:w-9/12 px-1 sm:px-5 py-2 gap-1">
                         <p className='font-bold text-lg'>{i?.card?.info?.name}</p>
                         <ul className='list-disc pl-3'>
-                            <li><p >₹{i?.card?.info?.price / 100}</p></li>
-                            <li className='text-green-900'><h4 className=" text-white inline-block w-14 pl-1 py-[2px] rounded-lg   whitespace-nowrap bg-green-700 overflow-hidden text-ellipsis"><FontAwesomeIcon icon={faStar} style={{ color: "#ffffff", }} /> {i?.card?.info?.ratings?.aggregatedRating?.rating}   </h4>
-                            ({i?.card?.info?.ratings?.aggregatedRating?.ratingCountV2})</li>
+                            <li><p >₹{i?.card?.info?.price / 100 || i?.card?.info?.defaultPrice / 100}</p></li>
+                            <li className='text-green-900'><h4 className=" text-white inline-block w-14 pl-1 py-[2px] rounded-lg   whitespace-nowrap bg-green-700 overflow-hidden text-ellipsis"><FontAwesomeIcon icon={faStar} style={{ color: "#ffffff", }} /> {i?.card?.info?.ratings?.aggregatedRating?.rating || 0}   </h4>
+                            ({i?.card?.info?.ratings?.aggregatedRating?.ratingCountV2 || 0})</li>
                             <li><p>{i?.card?.info?.description}</p></li>
                         </ul>
 

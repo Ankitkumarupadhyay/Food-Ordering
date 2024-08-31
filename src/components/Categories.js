@@ -40,7 +40,7 @@ const Categories = () => {
   return elements.length ===0 ? <CategoriesShimmer /> : <>
   <div className="main hidden sm:flex flex-col  2xl:w-[1200px] xl:w-[1100px] lg:w-[1000px] md:w-[760px] sm:w-[640px]    mx-auto  ">
 
-    <div className="head py-2 sm:py-5  flex items-center justify-between">
+    <div className="head py-2 sm:py-5 hidden  sm:flex items-center justify-between">
        <div className='headCon sm:text-[35px] font-bold '> What's on your mind?</div>
         <div className=" flex">
             <div className='btn sm:w-[40px] sm:h-[40px] bg-[#e2e2e7] rounded-full mx-2 flex justify-center items-center cursor-pointer ' onClick={()=> previous()} >🔙</div>

@@ -49,9 +49,9 @@ const Body = () => {
     return  listOfRestaurants.length === 0 ? (<Shimmer />) : (
         
         <div className="body w-[100%] ">
-            <Categories />
+             <div className="hidden sm:flex"><Categories /></div>
             {/* {console.log(resHead)} */}
-                <h1 className='ml-[180px] headCon sm:text-[35px] font-bold'>{resHead}</h1>
+                <h1 className='sm:ml-[180px] headCon sm:text-[35px] font-bold'>{resHead}</h1>
             
             <div className="filter  gap-5 flex">
                 <div className="search bg-white flex border-2 border-solid border-[#FECB0F] rounded-xl">

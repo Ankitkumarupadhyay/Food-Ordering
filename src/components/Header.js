@@ -9,7 +9,11 @@ import "../CSS/header.css"
 
 const Header = () => {
     const [btnText, setBtnText] = useState("Login");
-    const [ulDisplay, setUlDisplay] = useState("")
+    const [ulDisplay, setUlDisplay] = useState("");
+    const [line1, setLine1] = useState("0deg");
+    const [gap, setGap] = useState("16px");
+    const [line3, setLine3] = useState("0deg");
+
 
 
     const cartItems = useSelector((store) => store.cart.items)
@@ -19,9 +23,17 @@ const Header = () => {
         setBtnText((prev) => prev === "LogOut" ? "Login" : "LogOut")
     }
 
+    const navButton = ()=>{
+        ulDisplay === "flex" ? setUlDisplay("") : setUlDisplay("flex");
+
+        gap === "16px" ? setGap("8px") : setGap("16px")
+        line1 === "0deg" ? setLine1("410deg") : setLine1("0deg")
+        line3 === "0deg" ? setLine3("-410deg") : setLine3("0deg")
+    }
+
 
     return (
-        <header className="flex w-[100%] z-50 justify-between  shadow-xl  " >
+        <header className="flex  w-[100%] z-50 justify-between  shadow-xl  " >
             <div className="logo   ">
                 <img src={logo} alt='logo' />
             </div>
@@ -39,12 +51,12 @@ const Header = () => {
 
                 </ul>
 
-                <div className="headerBtn" onClick={() => ulDisplay === "flex" ? setUlDisplay("") : setUlDisplay("flex")} >
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
+                <div className="headerBtn" style={{gap:gap}} onClick={() => navButton() } >
+                    <div className="line line1" style={{rotate: line1 }}></div>
+                    
+                    <div className="line line2" style={{rotate: line3 }}></div>
                 </div>
-
+                
 
             </div>
         </header>

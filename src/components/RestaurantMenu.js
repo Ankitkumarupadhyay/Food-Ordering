@@ -6,6 +6,7 @@ import Accordian from "./Accordian";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import ResMenuShimmer from "./ResMenuShimmer";
 
 const RestaurantMenu = () => {
     // const[showItems,setShowItems]= useState(false)
@@ -16,7 +17,7 @@ const RestaurantMenu = () => {
     const Info = useRestaurantMenu(resId);
 
     if (Info === null) {
-        return <Shimmer />
+        return <ResMenuShimmer />
     }
 
     const resInfo = Info?.cards.filter((e) => e?.card?.card?.info)[0]

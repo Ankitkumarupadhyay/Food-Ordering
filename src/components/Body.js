@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../CSS/body.css';
 import RestaurantCard from './RestaurantCard';
 import Shimmer from './Shimmer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Categories from './Categories';
 
 
@@ -18,6 +18,8 @@ const Body = () => {
         )))
 
     }
+
+    const navigate=useNavigate()
 
     useEffect(() => {
         fetchData()
@@ -39,6 +41,10 @@ const Body = () => {
         setFilteredRestaurants(restro?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setResHead(restro?.card?.card?.header?.title)
         
+    }
+
+    function goToRestourentMenu(resId){
+            navigate(`/restaurant/${resId}`)
     }
 
 
@@ -70,10 +76,11 @@ const Body = () => {
                 <button className="filterBtn  bg-[#FECB0F] lg:{py-2 px-3}  rounded-xl" onClick={() => filterCardsRated()} >Top rated Restaurants</button>
 
             </div>
-            <div className="resContainer  flex flex-wrap items-center justify-center">
+            <div  className="resContainer  flex flex-wrap items-center justify-center">
                 {
                     filteredRestaurants.map((restaurant) => (
-                        <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}> <RestaurantCard resData={restaurant} /></Link>
+                         <div onClick={()=> goToRestourentMenu(restaurant.info.id)}><RestaurantCard resData={restaurant} /></div>
+                       
                     ))
                 }
 
